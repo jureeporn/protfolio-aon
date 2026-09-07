@@ -16,7 +16,7 @@ defineProps<{
       <div 
         v-for="project in projects" 
         :key="project.name"
-        class="bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-lg border border-slate-200 dark:border-slate-700 relative overflow-hidden"
+        class="bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-lg border border-slate-200 dark:border-slate-700 relative overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
       >
         <!-- Background Decoration -->
         <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>

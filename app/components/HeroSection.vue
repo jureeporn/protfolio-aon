@@ -24,21 +24,36 @@ defineProps<{
         />
       </div>
 
-      <p class="text-sm md:text-base uppercase tracking-[0.3em] font-semibold text-slate-500 dark:text-slate-400 mb-4">
+      <p class="text-sm md:text-base uppercase tracking-[0.3em] font-semibold text-slate-500 dark:text-slate-400 mb-4 hero-anim" style="animation-delay: 0s;">
         Hello, I'm {{ basics.nickname }}
       </p>
 
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight hero-anim" style="animation-delay: 0.2s;">
         {{ basics.name }}
       </h1>
 
-      <h2 class="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600 dark:from-blue-400 dark:to-amber-400 font-bold mb-8">
+      <h2 class="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600 dark:from-blue-400 dark:to-amber-400 font-bold mb-8 hero-anim" style="animation-delay: 0.4s;">
         {{ basics.role }}
       </h2>
 
-      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-light">
+      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-light hero-anim" style="animation-delay: 0.6s;">
         {{ basics.tagline }}
       </p>
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-anim {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

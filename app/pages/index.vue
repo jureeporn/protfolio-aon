@@ -29,13 +29,13 @@ useSeoMeta({
       <HeroSection :basics="portfolio.basics" />
       
       <div class="px-4 md:px-8 space-y-32">
-        <DetailedProjectSection :projects="portfolio.featuredProjects" />
+        <DetailedProjectSection v-reveal :projects="portfolio.featuredProjects" />
         
-        <PastProjectsSection :projects="portfolio.pastProjects" />
+        <PastProjectsSection v-reveal :projects="portfolio.pastProjects" />
         
-        <SkillTags :skills="portfolio.skills" />
+        <SkillTags v-reveal :skills="portfolio.skills" />
         
-        <PersonalSection :personal="portfolio.personal" />
+        <PersonalSection v-reveal :personal="portfolio.personal" />
       </div>
     </div>
   </div>

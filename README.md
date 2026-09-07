@@ -51,6 +51,8 @@ protfolio-aon/
 
 1. **JSON-Driven Content:** ข้อมูลเกือบทั้งหมดในเว็บ (ชื่อ, รายละเอียดโปรเจค, งานอดิเรก) ถูกดึงมาจากไฟล์ `app/data/portfolio-data.json` เพียงไฟล์เดียว ทำให้หากต้องการแก้ไขข้อความในอนาคต **สามารถแก้ที่ JSON ได้เลย โดยไม่ต้องไปยุ่งกับไฟล์โค้ด (Vue/HTML)**
 2. **Automated Deployment:** ระบบถูกผูกไว้กับ GitHub Actions ทันทีที่กด `git push` ขึ้น Branch `main` ระบบจะทำการ Build โค้ดและนำไปอัปเดตบนหน้าเว็บจริง (GitHub Pages) ให้อัตโนมัติ
+3. **Premium Animations:** ผสานลูกเล่นการแสดงผลแบบค่อยๆ ปรากฏเมื่อเลื่อนจอ (Reveal on Scroll) และ Text Reveal ทำให้เว็บไซต์ดูหรูหราและมีมิติ
+4. **Interactive Mouse Effect:** เพิ่ม Custom Cursor แบบ Spotlight และ Trailing ring ช่วยยกระดับความรู้สึกพรีเมียมขณะเลื่อนเมาส์บน Desktop
 
 ---
 
