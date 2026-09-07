@@ -5,6 +5,6 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   modules: ['@nuxtjs/tailwindcss'],
   app: {
-    baseURL: '/Next4Aon/' // เปลี่ยนชื่อ Next4Aon เป็นชื่อ Repository ของคุณถ้าตั้งชื่ออื่น
+    baseURL: '/protfolio-aon/' 
   }
 })
