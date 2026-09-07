@@ -1,0 +1,27 @@
+{
+    "projects": [
+        {
+            "name": "FixAsset API",
+            "description": "Backend API for a Fixed Asset Management System, handling assets, inventory, master data, and approval workflows.",
+            "role": "Backend Developer",
+            "highlights": [
+                "Developed core modules for Asset, Inventory, and Approval management.",
+                "Integrated Azure AD for secure authentication and JWT for authorization.",
+                "Implemented scheduled tasks for automated notifications and workflows.",
+                "Integrated AWS S3 for robust document and image storage.",
+                "Created functionality for Excel report generation and QR code creation."
+            ],
+            "technologies": [
+                "NestJS",
+                "TypeScript",
+                "TypeORM",
+                "SQL Server (MSSQL)",
+                "Azure AD",
+                "AWS S3",
+                "Swagger"
+            ],
+            "github": "",
+            "demo": ""
+        }
+    ]
+}

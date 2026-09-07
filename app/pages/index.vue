@@ -2,10 +2,13 @@
 import type { Profile } from '~/shared/types/profile'
 
 const { data: profile, pending, error } = await useAsyncData<Profile>('profile', async () => {
-  // We can fetch from an API or just dynamically import the JSON file directly.
-  // Dynamic import works beautifully in Nuxt 3/4.
   const profileData = await import('~/data/profile.json')
   return profileData.default as Profile
+})
+
+const { data: fixAsset } = await useAsyncData('fixAsset', async () => {
+  const data = await import('~/data/my-fixasset.json')
+  return data.default.projects
 })
 
 useSeoMeta({
@@ -26,6 +29,7 @@ useSeoMeta({
 
     <div v-else-if="profile" class="space-y-24 pb-20">
       <HeroSection :basics="profile.basics" />
+      <DetailedProjectSection v-if="fixAsset" :projects="fixAsset" />
       <SkillTags :skills="profile.skills" />
       <ExperienceSection :workHistory="profile.workHistory" />
       <ProjectGrid :projects="profile.projects" />

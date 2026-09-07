@@ -27,3 +27,13 @@ export interface WorkHistory {
   endDate?: string;
   description: string;
 }
+
+export interface DetailedProject {
+  name: string;
+  description: string;
+  role: string;
+  highlights: string[];
+  technologies: string[];
+  github?: string;
+  demo?: string;
+}
