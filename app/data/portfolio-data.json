@@ -1,0 +1,75 @@
+{
+  "basics": {
+    "name": "Jureeporn Chomloke",
+    "nickname": "Aon",
+    "role": "Backend Developer",
+    "tagline": "Passionate about robust architectures, continuous learning, and crafting seamless digital experiences.",
+    "avatar": "https://api.dicebear.com/7.x/notionists/svg?seed=Aon&backgroundColor=e5e7eb"
+  },
+  "featuredProjects": [
+    {
+      "name": "SPRC (Caltex) - FixAsset API",
+      "description": "พัฒนาระบบ Backend API ประสิทธิภาพสูงสำหรับการจัดการทรัพย์สิน (Fixed Asset Management System) รองรับการจัดการสินค้าคงคลัง ข้อมูลหลัก และระบบอนุมัติที่ซับซ้อน",
+      "role": "Backend Developer",
+      "highlights": [
+        "ออกแบบและพัฒนา Core Modules สำหรับการจัดการ Asset, Inventory และระบบ Approval Workflow",
+        "ยกระดับความปลอดภัยของระบบด้วยการยืนยันตัวตนผ่าน Azure AD และ JWT Authorization",
+        "สร้างระบบอัตโนมัติ (Scheduled Tasks) สำหรับการแจ้งเตือนและการทำงานเบื้องหลัง",
+        "เชื่อมต่อ AWS S3 เพื่อการจัดเก็บเอกสารและรูปภาพที่เสถียรและปรับขยายได้",
+        "พัฒนาระบบสร้างรายงาน Excel (Export) และการสร้าง QR Code แบบไดนามิก"
+      ],
+      "technologies": ["NestJS", "TypeScript", "TypeORM", "SQL Server", "Azure AD", "AWS S3", "Swagger"]
+    },
+    {
+      "name": "SCG ROOF EXPERT - Roof API",
+      "description": "ออกแบบและดูแล Backend API หลักสำหรับแพลตฟอร์ม Roof/tixget เพื่อรองรับกระบวนการทำงานที่ซับซ้อนของระบบจองและออกตั๋ว",
+      "role": "Backend Developer",
+      "highlights": [
+        "รับผิดชอบการพัฒนาและบำรุงรักษา API (API Development & Maintenance) ให้ทำงานได้อย่างลื่นไหล",
+        "พัฒนาระบบสร้างเอกสาร PDF อัตโนมัติด้วย TCPDF และ DOMPDF สำหรับตั๋วและใบเสร็จ",
+        "ประมวลผลและดึงข้อมูลจากไฟล์ Spreadsheet ขนาดใหญ่ด้วย PhpSpreadsheet",
+        "ผสานรวมระบบสแกนและสร้าง QR Code เพื่อความสะดวกในการใช้งานของแพลตฟอร์ม"
+      ],
+      "technologies": ["PHP", "Zend Framework 3", "Docker", "Composer"]
+    }
+  ],
+  "pastProjects": [
+    {
+      "name": "FTI",
+      "description": "สภาอุตสาหกรรมแห่งประเทศไทย"
+    },
+    {
+      "name": "NEO",
+      "description": "ระบบจัดการภายในและบริการข้อมูล"
+    },
+    {
+      "name": "tbroker",
+      "description": "แพลตฟอร์มนายหน้าและการจัดการประกันภัย"
+    }
+  ],
+  "skills": {
+    "core": ["PHP", "Laravel", "NestJS", "MySQL", "MSSQL", "Bootstrap"],
+    "learning": [
+      {
+        "topic": "AI-Assisted Full-Stack Development",
+        "description": "ปัจจุบันกำลังสนุกกับการสร้างโปรเจคส่วนตัวแบบ Full-Stack (Next.js, NestJS, Tailwind CSS) โดยประยุกต์ใช้ AI อย่าง Gemini Antigravity เข้ามาเป็นผู้ช่วยในการเขียนโค้ดและออกแบบสถาปัตยกรรมระบบ"
+      }
+    ]
+  },
+  "personal": {
+    "hobbies": [
+      {
+        "title": "Baking & Thai Desserts",
+        "description": "ในวันว่าง ฉันหลงใหลในการทำขนมไทยและเบเกอรี่หลากหลายชนิด ไม่ว่าจะเป็นเค้กส้ม คุกกี้ ปังกรอบเนยหนึบ ขนมปังกระเทียม หรือนูกัต การทำขนมสอนให้ฉันรู้จักความใจเย็นและการใส่ใจในรายละเอียด"
+      },
+      {
+        "title": "Sourdough Journey",
+        "description": "ช่วงนี้ฉันกำลังอินกับการทำขนมปังซาวโดว์ (Sourdough) ซึ่งเป็นความท้าทายใหม่ที่ต้องใช้ความอดทน ตั้งแต่การเริ่มเลี้ยงยีสต์ธรรมชาติ (Starter) ไปจนถึงการใช้ AI ช่วยค้นหาสูตรและคำนวณระยะเวลาหมักที่เหมาะสมที่สุด"
+      }
+    ],
+    "pets": {
+      "title": "My Cat Family",
+      "description": "นอกจากเขียนโค้ดและทำขนมแล้ว ฉันยังมีแก๊งเจ้านายตัวน้อยอีก 3 ตัว ที่คอยป่วนและสร้างรอยยิ้มให้ในทุกๆ วัน"
+    }
+  }
+}

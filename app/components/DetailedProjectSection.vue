@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { DetailedProject } from '~/shared/types/profile'
+import type { FeaturedProject } from '~/shared/types/profile'
 
 defineProps<{
-  projects: DetailedProject[]
+  projects: FeaturedProject[]
 }>()
 </script>
 

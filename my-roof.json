@@ -1,0 +1,22 @@
+{
+    "projects": [
+        {
+            "name": "Roof API",
+            "description": "Backend API for the Roof/tixget platform built with Zend Framework 3.",
+            "role": "Backend Developer",
+            "highlights": [
+                "API Development and Maintenance",
+                "PDF generation with TCPDF and DOMPDF",
+                "Spreadsheet processing using PhpSpreadsheet",
+                "QR Code integration"
+            ],
+            "technologies": [
+                "PHP",
+                "Zend Framework 3",
+                "Docker",
+                "Composer"
+            ],
+            "github": ""
+        }
+    ]
+}

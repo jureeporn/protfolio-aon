@@ -1,0 +1,46 @@
+{
+    "projects": [
+        {
+            "name": "FixAsset API",
+            "description": "Robust Backend API for a comprehensive Fixed Asset Management System. Engineered to seamlessly handle asset tracking, inventory management, master data, and complex approval workflows.",
+            "role": "Backend Developer",
+            "highlights": [
+                "Engineered core modules for comprehensive Asset, Inventory, and Approval management.",
+                "Implemented secure authentication and authorization utilizing Azure AD and JWT.",
+                "Designed and deployed automated scheduled tasks (CRON) for workflow notifications.",
+                "Integrated AWS S3 for highly available and scalable document and image storage.",
+                "Developed advanced features including dynamic Excel report generation and QR code integration."
+            ],
+            "technologies": [
+                "NestJS",
+                "TypeScript",
+                "TypeORM",
+                "SQL Server (MSSQL)",
+                "Azure AD",
+                "AWS S3",
+                "Swagger"
+            ],
+            "github": "",
+            "demo": ""
+        },
+        {
+            "name": "Roof API (tixget.com)",
+            "description": "Scalable Backend API powering the Roof/Tixget ticketing and booking platform, engineered to handle complex business logic and third-party integrations.",
+            "role": "Backend Developer",
+            "highlights": [
+                "Spearheaded API development, maintenance, and optimization for high-performance platform operations.",
+                "Engineered dynamic PDF generation pipelines utilizing TCPDF and DOMPDF for ticketing and invoicing.",
+                "Implemented advanced spreadsheet processing and data extraction using PhpSpreadsheet.",
+                "Seamlessly integrated QR Code functionality for efficient ticket validation and user flows."
+            ],
+            "technologies": [
+                "PHP",
+                "Zend Framework 3",
+                "Docker",
+                "Composer"
+            ],
+            "github": "",
+            "demo": "https://b2b.tixget.com"
+        }
+    ]
+}

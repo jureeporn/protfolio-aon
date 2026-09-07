@@ -2,37 +2,37 @@
   "basics": {
     "name": "จุรีพร ชมโลก (Jureeporn Chomloke)",
     "nickname": "อ้อน (AON)",
-    "position": "Programmer Backend (เขียน Frontend ได้นิดหน่อย แบบเขียนเอง)",
-    "hobby": "ชอบทำขนมไทย / เบเกอรี่ เช่น เค้กส้ม, บราวนี่, คุกกี้ ฯลฯ แต่ช่วงนี้สนใจการทำขนมปัง ซาวโด เป็นอย่างมาก เป็นสิ่งที่ท้าทายและต้องใช้เวลา โดยเริ่มตั้งแต่ เลี้ยงยีสต์ (Starter)",
+    "position": "Backend Developer & Full-Stack Enthusiast",
+    "hobby": "ยามว่างฉันหลงใหลในการทำขนมไทยและเบเกอรี่ เช่น เค้กส้ม บราวนี่ และคุกกี้ ปัจจุบันฉันกำลังสนุกกับความท้าทายในการทำขนมปังซาวโดว์ (Sourdough) ซึ่งสอนให้ฉันรู้จักความใจเย็นและการใส่ใจในรายละเอียด ตั้งแต่ขั้นตอนการเลี้ยงยีสต์ธรรมชาติ (Starter)",
     "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Aon&backgroundColor=b6e3f4"
   },
   "skills": {
     "current": [
       "PHP",
-      "MySql",
+      "MySQL",
       "MSSQL",
       "Laravel",
       "Bootstrap",
       "NestJS",
-      "Vue"
+      "Vue.js"
     ],
     "learning": [
-      "Gemini Antigravity",
+      "AI-Assisted Development (Gemini Antigravity)",
       "Next.js",
-      "NestJS (Fullstack)",
+      "NestJS (Full-Stack Architecture)",
       "Python",
-      "การจัดการข้อมูลบน DB"
+      "Advanced Database Management"
     ]
   },
   "projects": [
     {
       "name": "SPRC (Caltex)",
-      "description": "Backend เขียนด้วยภาษา NestJS",
+      "description": "พัฒนาระบบ Backend โดยใช้เทคโนโลยี NestJS เพื่อรองรับการทำงานที่มีประสิทธิภาพ",
       "url": ""
     },
     {
-      "name": "Personal Mini Project",
-      "description": "โปรเจคเล็กๆ ของฉันเอง เริ่มต้นจากการใช้ AI ช่วยเขียนโปรแกรมแบบ Fullstack ทั้งหน้าบ้านและหลังบ้าน (NestJS, Next.js)",
+      "name": "Personal Full-Stack Project",
+      "description": "โปรเจคส่วนตัวที่เริ่มต้นจากการศึกษาและประยุกต์ใช้ AI (Gemini Antigravity) เข้ามาช่วยยกระดับการพัฒนาโปรแกรมแบบ Full-Stack ทั้งหน้าบ้าน (Next.js) และหลังบ้าน (NestJS)",
       "url": ""
     }
   ],
