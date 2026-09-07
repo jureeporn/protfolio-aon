@@ -1,0 +1,40 @@
+{
+  "basics": {
+    "name": "จุรีพร ชมโลก (Jureeporn Chomloke)",
+    "nickname": "อ้อน (AON)",
+    "position": "Programmer Backend (เขียน Frontend ได้นิดหน่อย แบบเขียนเอง)",
+    "hobby": "ชอบทำขนมไทย / เบเกอรี่ เช่น เค้กส้ม, บราวนี่, คุกกี้ ฯลฯ แต่ช่วงนี้สนใจการทำขนมปัง ซาวโด เป็นอย่างมาก เป็นสิ่งที่ท้าทายและต้องใช้เวลา โดยเริ่มตั้งแต่ เลี้ยงยีสต์ (Starter)",
+    "avatarUrl": "https://api.dicebear.com/7.x/adventurer/svg?seed=Aon&backgroundColor=b6e3f4"
+  },
+  "skills": {
+    "current": [
+      "PHP",
+      "MySql",
+      "MSSQL",
+      "Laravel",
+      "Bootstrap",
+      "NestJS",
+      "Vue"
+    ],
+    "learning": [
+      "Gemini Antigravity",
+      "Next.js",
+      "NestJS (Fullstack)",
+      "Python",
+      "การจัดการข้อมูลบน DB"
+    ]
+  },
+  "projects": [
+    {
+      "name": "SPRC (Caltex)",
+      "description": "Backend เขียนด้วยภาษา NestJS",
+      "url": ""
+    },
+    {
+      "name": "Personal Mini Project",
+      "description": "โปรเจคเล็กๆ ของฉันเอง เริ่มต้นจากการใช้ AI ช่วยเขียนโปรแกรมแบบ Fullstack ทั้งหน้าบ้านและหลังบ้าน (NestJS, Next.js)",
+      "url": ""
+    }
+  ],
+  "workHistory": []
+}
