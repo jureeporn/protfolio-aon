@@ -5,6 +5,14 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   modules: ['@nuxtjs/tailwindcss'],
   app: {
-    baseURL: '/protfolio-aon/' 
+    // Removed baseURL: '/protfolio-aon/' to make it run at root /
+  },
+  runtimeConfig: {
+    // Private keys are only available on the server
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+    // Public keys that are exposed to the client
+    public: {
+      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
+    }
   }
 })

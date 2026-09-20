@@ -1,90 +1,104 @@
-# Jureeporn's Portfolio (Aon) 🚀
+# 🗺️ Route Mapping System (ระบบคำนวณเส้นทางและแผนที่)
 
-ยินดีต้อนรับสู่โปรเจค Portfolio ส่วนตัวของ **อ้อน (Jureeporn Chomloke)** โปรเจคนี้ถูกสร้างขึ้นเพื่อนำเสนอประสบการณ์การทำงานในสาย Backend Developer ทักษะการเขียนโปรแกรม และสะท้อนตัวตนผ่านงานอดิเรก (การทำขนมและน้องแมว) 
+โปรเจกต์นี้คือ Web Application สำหรับคำนวณเส้นทาง ระยะทาง และระยะเวลาในการเดินทางจาก **"ตำแหน่งปัจจุบันของผู้ใช้งาน"** ไปยัง **"ตำแหน่งของบริษัท"** โดยอ้างอิงจากสภาพการจราจรแบบเรียลไทม์ 
 
-โปรเจคนี้เน้นการออกแบบสไตล์ **Minimalist & Glassmorphism** ให้ความรู้สึกเรียบหรู ดูแพง สบายตา และจัดทำเป็นรูปแบบหน้าเดียว (Single Page) เพื่อให้อ่านง่ายและลื่นไหลที่สุด
+โปรเจกต์ถูกออกแบบโดยใช้สถาปัตยกรรมแบบแยกส่วน **Frontend** และ **Backend** ภายในโครงสร้างของ Nuxt เพื่อตอบโจทย์ด้านความปลอดภัยขั้นสูงสุดในการเก็บรักษา API Key ตามข้อกำหนดที่ว่า **"ห้ามนำ Google API key เข้าสู่ git"**
 
 ---
 
-## 🛠 Tech Stack (เทคโนโลยีที่ใช้)
+## ⚙️ การทำงานของโปรเจกต์ (System Workflow)
 
-* **Framework:** [Nuxt 4](https://nuxt.com/) (Vue.js Framework)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **Language:** TypeScript
-* **Deployment:** GitHub Pages (ผ่าน GitHub Actions CI/CD)
-* **Data Management:** JSON-driven architecture (ขับเคลื่อนข้อมูลด้วยไฟล์ JSON)
+ระบบถูกออกแบบมาเพื่อ **ซ่อน API Key ไม่ให้หลุดไปที่ฝั่งผู้ใช้งานโดยตรง (Client-side) หรือบน GitHub** โดยมีขั้นตอนการทำงานดังนี้:
+
+1.  **ขอพิกัด (Geolocation):** เมื่อผู้ใช้กดปุ่มคำนวณเส้นทาง หน้าเว็บ (Frontend) จะใช้ HTML5 Geolocation API ดึงพิกัด Latitude/Longitude ปัจจุบันของผู้ใช้งาน
+2.  **ส่งข้อมูลไป Backend:** Frontend จะส่งพิกัดต้นทางที่ได้ ยิง Request ไปยัง API ฝั่ง Backend ของเราเอง (`GET /api/route?lat=...&lng=...`)
+3.  **ประมวลผลที่ Backend:** 
+    *   Backend จะดึงพิกัดของบริษัท (จุดหมายปลายทาง) จากไฟล์ `config/company.json`
+    *   Backend จะดึงรหัส `GOOGLE_MAPS_API_KEY` จากไฟล์ `.env` ที่ถูกซ่อนไว้
+    *   Backend ทำการส่ง Request ไปยัง **Google Maps Routes API** พร้อมพารามิเตอร์ `TRAFFIC_AWARE` เพื่อให้คำนวณระยะเวลาจากสภาพจราจรปัจจุบัน
+4.  **ส่งมอบผลลัพธ์:** Backend รับข้อมูลจาก Google, ทำการจัดรูปแบบข้อมูล (ระยะทาง, เวลา, เส้นทาง Polyline ที่ผ่านการเข้ารหัส) ให้พร้อมใช้งาน แล้วส่งกลับมาให้ Frontend
+5.  **แสดงผล (Render):** Frontend นำตัวเลขระยะทางและเวลามาแสดงที่หน้าจอ และส่งข้อมูล Polyline ไปให้ Component เพื่อถอดรหัสและวาดเป็นเส้นทางสีน้ำเงินบน Google Map
 
 ---
 
 ## 📂 โครงสร้างระบบ (Project Structure)
 
-โปรเจคนี้ถูกออกแบบโครงสร้างให้แยกส่วนการทำงานออกจากกันอย่างชัดเจน เพื่อง่ายต่อการบำรุงรักษาและการอัปเดตข้อมูลในอนาคต:
+โปรเจกต์นี้แยกส่วนการทำงานระหว่าง UI (Frontend) และ API (Backend) ออกจากกันอย่างชัดเจนตามมาตรฐานของ Nuxt 4:
 
 ```text
-protfolio-aon/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml            # ตั้งค่า CI/CD สำหรับรันอัตโนมัติขึ้น GitHub Pages
-├── app/
-│   ├── components/               # ส่วนประกอบของหน้าจอ (UI Components)
-│   │   ├── HeroSection.vue       # ส่วนบนสุด (แนะนำตัวและรูปภาพ)
-│   │   ├── DetailedProjectSection.vue # ส่วนแสดงรายละเอียดโปรเจคหลัก (SPRC, SCG)
-│   │   ├── PastProjectsSection.vue # ส่วนแสดงประสบการณ์โปรเจคที่ผ่านมา
-│   │   ├── PersonalSection.vue   # ส่วนงานอดิเรก (ขนมปังซาวโดว์ และ แมว)
-│   │   └── SkillTags.vue         # ส่วนแสดงทักษะ (Core Stack & AI Learning)
-│   ├── data/
-│   │   └── portfolio-data.json   # 🔥 ฐานข้อมูลหลักที่ใช้เก็บข้อความและรายละเอียดทั้งหมด
+Next4Aon/
+├── app/                          # ส่วนของ Frontend (UI & Components)
+│   ├── components/
+│   │   ├── MapDisplay.vue        # Component สำหรับเรนเดอร์ Google Maps
+│   │   └── MouseEffect.vue       # Component สร้างเอฟเฟกต์เมาส์
 │   ├── pages/
-│   │   └── index.vue             # หน้าหลักของเว็บไซต์ (นำ Components มารวมกัน)
-│   └── app.vue                   # Root component
-├── public/                       # ไฟล์ภาพ (เช่น รูปแมว, รูปทำขนม, favicon)
-├── shared/
-│   └── types/
-│       └── profile.ts            # กำหนด Type (Interface) สำหรับข้อมูลพอร์ตโฟลิโอ
-├── nuxt.config.ts                # ไฟล์ตั้งค่าหลักของ Nuxt (รวมถึง BaseURL สำหรับ GitHub Pages)
-└── package.json                  # ไฟล์จัดการ Dependencies
+│   │   └── index.vue             # หน้าเว็บหลัก (แสดงฟอร์มคำนวณและผลลัพธ์ ดีไซน์ Glassmorphism)
+│   └── app.vue                   # Root Component
+├── config/                       # ส่วนตั้งค่าคงที่
+│   └── company.json              # ไฟล์เก็บพิกัดบริษัท (แก้ไขจุดหมายได้ที่นี่)
+├── server/                       # ส่วนของ Backend (API & Logic)
+│   └── api/
+│       └── route.get.ts          # API ซ่อน Key และยิงไปหา Google Routes API
+├── .env                          # ไฟล์เก็บ API Key (ถูกตั้งค่าให้ไม่ขึ้น Git)
+├── nuxt.config.ts                # ไฟล์ตั้งค่าหลักของโปรเจกต์ (รวมถึง Runtime Config)
+└── package.json                  # จัดการ Dependencies
 ```
 
 ---
 
-## 💡 จุดเด่นของระบบ (Key Features)
+## 🛠 Tech Stack (เทคโนโลยีที่ใช้)
 
-1. **JSON-Driven Content:** ข้อมูลเกือบทั้งหมดในเว็บ (ชื่อ, รายละเอียดโปรเจค, งานอดิเรก) ถูกดึงมาจากไฟล์ `app/data/portfolio-data.json` เพียงไฟล์เดียว ทำให้หากต้องการแก้ไขข้อความในอนาคต **สามารถแก้ที่ JSON ได้เลย โดยไม่ต้องไปยุ่งกับไฟล์โค้ด (Vue/HTML)**
-2. **Automated Deployment:** ระบบถูกผูกไว้กับ GitHub Actions ทันทีที่กด `git push` ขึ้น Branch `main` ระบบจะทำการ Build โค้ดและนำไปอัปเดตบนหน้าเว็บจริง (GitHub Pages) ให้อัตโนมัติ
-3. **Premium Animations:** ผสานลูกเล่นการแสดงผลแบบค่อยๆ ปรากฏเมื่อเลื่อนจอ (Reveal on Scroll) และ Text Reveal ทำให้เว็บไซต์ดูหรูหราและมีมิติ
-4. **Interactive Mouse Effect:** เพิ่ม Custom Cursor แบบ Spotlight และ Trailing ring ช่วยยกระดับความรู้สึกพรีเมียมขณะเลื่อนเมาส์บน Desktop
+*   **Framework หลัก:** [Nuxt 4](https://nuxt.com/) (ครอบคลุมการทำงานทั้ง Frontend และ Backend ในโปรเจกต์เดียว)
+    *   **Frontend:** Vue 3 (Composition API) 
+    *   **Backend:** Nitro Server (Nuxt Server Routes)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Language:** TypeScript
+*   **External Services (Google Maps Platform):**
+    *   **Google Maps Routes API (Backend):** คำนวณเส้นทาง
+    *   **Google Maps JavaScript API (Frontend):** แสดงผลแผนที่
 
 ---
 
-## 🚀 การรันโปรเจคในเครื่อง (Local Development)
+## 🚀 การรันโปรเจกต์ (Local Setup)
 
-หากต้องการรันโปรเจคนี้เพื่อดูและแก้ไขบนเครื่องส่วนตัว:
-
-1. ติดตั้ง Dependencies ก่อน:
+1. **ติดตั้ง Dependencies:**
    ```bash
    npm install
    ```
 
-2. สั่งรัน Development Server:
+2. **ตั้งค่า Environment Variables (สำคัญมาก):**
+   *   สร้างไฟล์ชื่อ `.env` ไว้ที่โฟลเดอร์นอกสุดของโปรเจกต์ 
+   *   ใส่ Google Maps API Key ของคุณลงไปดังนี้:
+       ```env
+       GOOGLE_MAPS_API_KEY=ใส่_KEY_ของคุณที่นี่
+       ```
+
+3. **รัน Development Server:**
    ```bash
    npm run dev
    ```
-
-3. เปิดเบราว์เซอร์แล้วเข้าไปที่ `http://localhost:3000`
+4. **ทดสอบใช้งาน:** เปิดเบราว์เซอร์และเข้าไปที่ `http://localhost:3000`
 
 ---
 
-## 🌐 การนำขึ้นระบบจริง (Deployment)
+## 📦 วิธีการอัปโค้ดขึ้น Git (Version Control)
 
-โปรเจคนี้ถูกคอนฟิกมาเพื่อให้ทำงานร่วมกับ GitHub Pages ผ่าน GitHub Actions:
-- ข้อมูลการทำ CI/CD อยู่ที่ไฟล์ `.github/workflows/deploy.yml`
-- Base URL ถูกตั้งค่าเป็น `/protfolio-aon/` ใน `nuxt.config.ts`
+เมื่อคุณรันโปรเจกต์และทดสอบระบบเสร็จเรียบร้อยแล้ว สามารถนำโค้ดขึ้นเก็บหรือส่งงานผ่าน Git ได้ด้วยคำสั่งดังนี้:
 
-**เมื่อต้องการอัปเดตหน้าเว็บจริง:**
-เพียงแค่ใช้คำสั่งมาตรฐานของ Git:
-```bash
-git add .
-git commit -m "อัปเดตข้อมูลพอร์ตโฟลิโอ"
-git push
-```
-หลังจาก Push เสร็จ รอประมาณ 1-2 นาที GitHub Actions จะจัดการแปลงไฟล์เป็น Static HTML (`npm run generate`) และอัปโหลดให้คนทั่วไปดูได้ที่ `https://jureeporn.github.io/protfolio-aon/` ทันที
+1. **เพิ่มไฟล์ที่ถูกแก้ไขทั้งหมดเข้า Staging:**
+   ```bash
+   git add .
+   ```
+
+2. **บันทึกการเปลี่ยนแปลง (Commit) พร้อมคำอธิบาย:**
+   ```bash
+   git commit -m "feat: ระบบแผนที่นำทางแยก Frontend-Backend สมบูรณ์"
+   ```
+
+3. **อัปโหลดโค้ดขึ้น Repository (Push):**
+   ```bash
+   git push
+   ```
+
+> 🔒 **เรื่องความปลอดภัย (Security Note):** 
+> เนื่องจากเราได้ตั้งค่าบอกให้ Git เพิกเฉยไฟล์ `.env` ไว้ในไฟล์ `.gitignore` ตั้งแต่แรกแล้ว ดังนั้นเมื่อคุณพิมพ์คำสั่ง `git add .` ตัว Git จะ **ข้ามไฟล์ `.env` ไปโดยอัตโนมัติ** ทำให้ Google API Key ของคุณปลอดภัย ไม่หลุดขึ้นไปโชว์บน GitHub อย่างแน่นอน!
